@@ -1,0 +1,92 @@
+AI KNOWLEDGE ASSISTANT - SAMPLE COMPANY GUIDE
+
+1. PROJECT OVERVIEW
+
+The AI Knowledge Assistant is an internal application that helps employees
+search company documents using natural language. Instead of manually
+opening many files, an employee can ask a question and receive an answer
+based on the approved company documents.
+
+2. SUPPORTED DOCUMENTS
+
+The prototype accepts PDF, DOCX, and TXT files. Documents are placed in a
+local documents folder before ingestion.
+
+3. RAG PIPELINE
+
+The application follows four major stages:
+
+Stage 1 - Document ingestion:
+The application reads supported files and extracts their text.
+
+Stage 2 - Chunking:
+Large documents are divided into smaller text chunks. A chunk overlap is
+used so that information near chunk boundaries is less likely to be lost.
+
+Stage 3 - Embeddings and vector storage:
+Each chunk is converted into a numerical vector called an embedding.
+The embeddings and their associated text are stored in ChromaDB.
+
+Stage 4 - Retrieval and generation:
+When an employee asks a question, the question is converted into an
+embedding. ChromaDB searches for the most similar chunks. The retrieved
+chunks are supplied to the language model as context. The language model
+then generates an answer using that context.
+
+4. TECHNOLOGY STACK
+
+The prototype uses Python as the programming language.
+
+LangChain is used to organize document loading, text splitting, retrieval,
+prompts, and the LLM workflow.
+
+PyPDF is used to extract text from PDF files.
+
+ChromaDB is used as the local vector database.
+
+Gemini is used for embeddings and for generating natural-language answers.
+
+python-dotenv is used to load the API key from the .env file.
+
+5. ANSWER POLICY
+
+The assistant should answer using only information found in the retrieved
+document context. If the answer is not available in the provided
+documents, the assistant should clearly say that it could not find the
+answer in the provided documents.
+
+The assistant should not invent company policies, numbers, dates, names,
+or technical details.
+
+6. EXAMPLE
+
+Question:
+What is ChromaDB used for?
+
+Answer:
+ChromaDB is used as the local vector database where document chunks and
+their embeddings are stored so relevant information can be retrieved for
+a user's question.
+
+7. SECURITY
+
+API keys should be stored in environment variables and should not be
+hard-coded into Python source files or committed to GitHub.
+
+Internal documents should only be used in environments approved by the
+organization. Access controls should be added before deploying the
+application for multiple employees.
+
+8. FUTURE ENHANCEMENTS
+
+Possible improvements include a Streamlit chat interface, drag-and-drop
+file upload, chat history, source citations, metadata filtering,
+hybrid search, reranking, FastAPI, Docker, automated document ingestion,
+Azure AI Search, Azure OpenAI, authentication, and cloud deployment.
+
+9. BUSINESS VALUE
+
+A document RAG assistant can reduce the time employees spend searching
+through large collections of policies, technical guides, procedures, and
+project documentation. It can also provide source references so employees
+can verify the information used to answer their questions.

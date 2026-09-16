@@ -1,0 +1,14 @@
+SAMPLE QUESTIONS
+
+1. What is the main purpose of the AI Knowledge Assistant project?
+2. What technologies are used in the project?
+3. What are the four main stages of the RAG pipeline?
+4. What happens during document ingestion?
+5. Why is chunking used?
+6. What does ChromaDB store?
+7. What is the difference between retrieval and generation?
+8. How does the application handle information that is not in the documents?
+9. What security practices are recommended?
+10. What are the possible future enhancements?
+11. Which component creates embeddings?
+12. How many documents can this sample application read?
